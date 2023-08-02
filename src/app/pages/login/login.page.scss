@@ -1,0 +1,352 @@
+ion-content {
+  --background: url('../../../assets/splash.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+ion-toolbar {
+  --background: #d9a328;
+}
+
+.contenedor-logo {
+  position: relative;
+  h1 {
+    color: #fff;
+    // font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    left: 23%;
+    margin: -25px 0 0 -25px;
+    z-index: 1000;
+  }
+}
+
+.contenedor-usuarios {
+  display: flex;
+  justify-content: space-around;
+}
+
+.usuarios-rapidos {
+  display: flex;
+  flex-direction: column;
+  p {
+    text-align: center;
+  }
+  img {
+    width: 5rem;
+    border-radius: 50%;
+    border: 2px dashed #000;
+  }
+}
+
+.seleccionado {
+  box-shadow: 0 0 24px #c9330e;
+}
+
+.usuarios-rapidos:hover {
+  cursor: pointer;
+}
+
+.usuarios-rapidos > img:active {
+  transform: scale(1.2);
+  transition: transform 0.3s;
+}
+
+.border-line {
+  border-right: 1px solid #eeeeee;
+}
+
+.line {
+  height: 3px;
+  width: 95%;
+  background-color: #e0e0e0;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 2px 4px #000;
+}
+
+.text-sm {
+  text-align: center;
+  margin-top: 0;
+}
+
+::placeholder {
+  color: #9b9494;
+  opacity: 1;
+  font-weight: 300;
+}
+
+:-ms-input-placeholder {
+  color: #9b9494;
+  font-weight: 300;
+}
+
+::-ms-input-placeholder {
+  color: #9b9494;
+  font-weight: 300;
+}
+
+input,
+textarea {
+  padding: 10px 12px 10px 12px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-top: 2px;
+  width: 80%;
+  box-sizing: border-box;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgb(255, 255, 255);
+}
+
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 2px solid #ffffff;
+  outline-width: 0;
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+}
+
+.btn-ingresar {
+  background-color: #2863e2;
+  width: 70%;
+  height: 4rem;
+  color: #fff;
+  border-radius: 10px;
+  display: block;
+  margin: 1rem auto 1rem auto;
+  box-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.btn-ingresar:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+// ***************************************************************************
+// ***************************************************************************
+// ***************************************************************************
+// ***************************************************************************
+
+/* From uiverse.io by @Jay-9527 */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 2.8em;
+  height: 1.7em;
+ }
+ 
+ /* Hide default HTML checkbox */
+ .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+ }
+ 
+ /* The slider */
+ .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+ }
+ 
+ .slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.2em;
+  bottom: 0.2em;
+  background-color: white;
+  transition: .4s;
+ }
+ 
+ input:checked + .slider {
+  background-color: rgb(0,221,80);
+ }
+ 
+ input:focus + .slider {
+  box-shadow: 0 0 1px rgb(0,221,80);
+ }
+ 
+ input:checked + .slider:before {
+  transform: translateX(1.5em);
+ }
+
+
+// ***************************
+// ***************************
+// ***************************
+// ***************************
+// ***************************
+
+ /* From uiverse.io by @Cornerstone-04 */
+.input {
+  width: 80%;
+  height: 4rem;
+  border: 2px solid transparent;
+  outline: none;
+  border-bottom: 2px solid #3f3f3f;
+  caret-color: #69faff;
+  background-color: #212121;
+  padding: 5px;
+  transition: .5s linear;
+  font-family: monospace;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.input:focus {
+  border: 2px solid #09d3f7;
+  caret-color: #fa4753;
+  color: #47eefa;
+  box-shadow: 4px 4px 10px #070707;
+}
+
+.input::placeholder{
+  color: #fff;
+}
+
+.input:focus::placeholder {
+  color: #47e5fa;
+}
+
+.card-center-radios{
+  width:95%; // adjust width on your ion-card suitable on your screen
+  display:block;
+  margin: 0px auto;
+  margin-top: 10px;
+  // margin-bottom: 20px;
+  padding-bottom: 1px;
+  box-shadow: 2px 20px 50px rgba(1, 1, 1, 0.5);
+}
+
+.card-center{
+  width:95%; // adjust width on your ion-card suitable on your screen
+  display:block;
+  margin: 0px auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  box-shadow: 2px 15px 10px rgba(1, 1, 1, 0.5);
+  
+}
+
+ion-card{
+  background : #9d7005;
+  border-radius: 17px;
+}
+
+.itemsFormLogin{
+  // border-radius: 50px;
+  height: 55px;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.7);
+  --highlight-height: 0px;
+
+  background: #87651c;
+  color: white;
+  margin-bottom: 40px;
+  border-radius: 50px;
+
+  ion-input{
+      font-size: 14px;
+      --padding-top: 20px;
+      --padding-bottom: 19px;
+      --padding-start: 5px;
+      color: white;
+      
+      
+  }
+
+  a{
+      font-size: 17px;
+      letter-spacing: 0px;
+      text-decoration: none;
+  }
+}
+
+.item-background-color{
+  --ion-item-background:transparent;
+}
+
+
+ion-icon{
+  padding-right: 7px;
+  font-size: 22px;
+  color: white;
+  transform:translateY(23%);
+}
+
+  .eyeicon{
+    position: absolute;
+    display: block;
+    bottom: 1.1rem;
+    right: 1rem;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  ion-card-subtitle{
+    padding-top: 15px;
+    font-size: 20px;
+    color: white;
+    margin-left: 4px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    // font-weight: bold;
+}
+ion-card-header{
+  padding: 0px 16px 16px 16px;
+}
+
+#imgLogin{
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 130px;
+  padding-top: 15px;
+}
+
+img{
+  width: 100px;
+  padding-top: 25px;
+  // padding-bottom: 20px;
+}
+
+ion-button{
+  margin-top: 18px;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.7);
+  --background: #87651c;     
+  margin-bottom: 20px;
+  
+}
+
+#logoLogIn{
+
+  font-size: 24px;
+  color: #ffffff;
+  transform:translateY(1%);
+}

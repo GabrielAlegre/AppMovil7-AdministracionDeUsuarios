@@ -1,0 +1,85 @@
+<ion-content force-overscroll="false">
+  <div class="backgroundLayer">
+    <ion-header class="ion-text-center">
+      <ion-toolbar >
+        <ion-title style="font-size: 16px; color: black;">App - Administración de usuarios</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+
+    <ion-card class="card-center-radios mt-4">  
+      <h6 class="mr-4  text-center" style="margin-top: 30px; font-size: 25px; margin-bottom: 40px; color: #fff">Ingresos rápidos</h6>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          color: #fff;
+        "
+      >
+      
+      <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+          <label class="switch">
+            <input type="checkbox" id="admin" (click)="loadFastUser(1)" />
+            <span class="slider"></span>
+          </label>
+          <p style="margin-right: 20px; margin-left: 5px">Admin</p>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <label class="switch">
+            <input type="checkbox" id="usuario" (click)="loadFastUser(3)" />
+            <span class="slider"></span>
+          </label>
+          <p style="margin-right: 20px; margin-left: 5px">Usuario</p>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <label class="switch">
+            <input type="checkbox" id="invitado" (click)="loadFastUser(2)" />
+            <span class="slider"></span>
+          </label>
+          <p style="margin-right: 5px; margin-left: 5px">Invitado</p>
+        </div>
+      </div>
+    </ion-card>
+
+    <ion-card class="card-center mt-4 p-3"> 
+      <img id="imgLogin" alt="Silhouette of mountains" src="../../../assets/seguidores.png" />
+      <ion-card-header>
+        <ion-card-subtitle>Ingrese sus datos:</ion-card-subtitle>
+      </ion-card-header>
+      <!-- <div class="contenedor-logo">
+        <img
+          style="
+            width: 10rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          "
+          src="../../../assets/admin-usuarios.png"
+          alt="logo"
+        />
+      </div> -->
+    <ion-item class="item-background-color ion-margin-bottom itemsFormLogin " >
+      <ion-label class="text-light"><ion-icon name="mail" item-start class="text-light"></ion-icon>Correo:</ion-label>
+      <ion-input class="text-light" name="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item style="padding-left: 30px; padding-right: 30px;" class="item-background-color itemsFormLogin" style="position: relative;">
+      <ion-label class="text-light"><ion-icon name="key" item-start class="text-light"></ion-icon>Contraseña:</ion-label>
+      <ion-input type="password" class="text-light" [(ngModel)]="password">
+      </ion-input>
+    </ion-item>
+
+    <ion-button (click)="loginUser()" expand="block" type="submit"><ion-icon id="logoLogIn" name="log-in"></ion-icon>Ingresar</ion-button>
+      <!-- <div class="row mb-3 px-3" style="color: #fff; margin-top: 1rem">
+        <button
+          type="submit"
+          class="btn btn-ingresar text-center"
+          (click)="loginUser()"
+        >
+          Ingresar
+        </button>
+      </div> -->
+    </ion-card>
+  
+</ion-content>

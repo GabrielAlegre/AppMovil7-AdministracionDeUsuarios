@@ -1,0 +1,253 @@
+<ion-content [ngClass]="scanActive?'scanner-activo':''" noscroll>
+  <!-- ******************************* LOGOUT *******************************-->
+  <ion-fab vertical="top" horizontal="start" slot="fixed" *ngIf="!scanActive">
+    <ion-fab-button color="secondary">
+      <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="logoutUser()" style="border: 1px solid #000; border-radius: 50%"><ion-icon
+          name="exit-sharp" style="
+            color: rgb(209, 35, 35);
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 3rem;
+          "></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <!-- ******************************* MENU ADMIN *******************************-->
+  <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="!scanActive && isAdmin && !formCreate">
+    <ion-fab-button color="secondary">
+      <ion-icon name="menu"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button style="border: 1px solid #000; border-radius: 50%" id="open-custom-dialog" expand="block"
+        (click)="goToCreateUser()"><ion-icon name="person-add-outline" style="
+            color: rgb(255, 0, 0);
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 5rem;
+          "></ion-icon></ion-fab-button>
+      <!-- <ion-fab-button
+        *ngIf="!userList"
+        style="border: 1px solid #000; border-radius: 50%"
+        id="open-custom-dialog"
+        expand="block"
+        (click)="goToUsersList()"
+        ><ion-icon
+          name="list-circle"
+          style="
+            color: rgb(0, 153, 255);
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 5rem;
+          "
+        ></ion-icon
+      ></ion-fab-button>
+      <ion-fab-button
+        *ngIf="!userList"
+        style="border: 1px solid #000; border-radius: 50%"
+        id="open-custom-dialog"
+        expand="block"
+        (click)="addPhotoToUser()"
+        ><ion-icon
+          name="camera-outline"
+          style="
+            color: rgb(0, 153, 255);
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 5rem;
+          "
+        ></ion-icon
+      ></ion-fab-button>
+      <ion-fab-button
+        *ngIf="!userList"
+        style="border: 1px solid #000; border-radius: 50%"
+        id="open-custom-dialog"
+        expand="block"
+        ><ion-icon
+          name="qr-code-outline"
+          style="
+            color: rgb(0, 153, 255);
+            background: rgb(255, 255, 255);
+            padding: 5px;
+            font-size: 5rem;
+          "
+          (click)="startScan()"
+        ></ion-icon
+      ></ion-fab-button> -->
+    </ion-fab-list>
+  </ion-fab>
+
+  <!-- *************************** FORMULARIO *************************** -->
+  <form *ngIf="!scanActive && isAdmin && formCreate && !userList" [formGroup]="form" (ngSubmit)="createUser()"
+    style="width: 90%; display: block; margin-left: auto; margin-right: auto">
+    <h2 class="mb-3" style="text-align: center; margin-top: 1.3rem; text-shadow: 1px 1px #000">
+      ALTA DE USUARIO
+    </h2>
+    <img style="
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #000;
+        border-radius: 50%;
+        box-shadow: 2px 2px 8px #000;
+      " (click)="addPhotoToUser()" src="{{userPhoto}}" alt="foto usuario" />
+    <p *ngIf="userPhoto == '../../assets/anonimo.png'" class="text-center" style="color: black;">*Agregue foto (click en
+      el logo)*</p>
+
+      
+    <div class="row g-3">
+      <!-- CONTROL APELLIDOS -->
+      <div class="question">
+        <input type="text" class="form-control" formControlName="apellidos" placeholder="Ingrese apellido/s" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+                          form.controls['apellidos'].errors?.['required'] &&
+                          form.controls['apellidos'].touched
+                        ">
+          *El campo Apellido es obligatorio*
+        </small>
+      </div>
+      <!-- CONTROL NOMBRES -->
+      <div class="question">
+        <input type="text" class="form-control" formControlName="nombres" placeholder="Ingrese nombre/s" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['nombres'].errors?.['required'] &&
+          form.controls['nombres'].touched
+                                ">
+          *El campo Nombre es obligatorio*
+        </small>
+      </div>
+      <!-- CONTROL DNI -->
+      <div class="question">
+        <input type="text" class="form-control" formControlName="dni" placeholder="Ingrese el N° DNI" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['dni'].errors?.['required'] &&
+          form.controls['dni'].touched
+                        ">
+          *El campo DNI es obligatorio*
+        </small>
+      </div>
+      <!-- CONTROL CORREO -->
+      <div class="question">
+        <input type="email" class="form-control" formControlName="correo" placeholder="Ingrese Correo" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['correo'].errors?.['required'] &&
+          form.controls['correo'].touched
+                        ">
+          *El campo Correo es obligatorio*
+        </small>
+      </div>
+      <!-- CONTROL CLAVE 1 -->
+      <div class="question">
+        <input type="password" class="form-control" formControlName="clave1" placeholder="Ingrese contraseña" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['clave1'].errors?.['required'] &&
+          form.controls['clave1'].touched
+                        ">
+          *La contraseña es obligatoria*
+        </small>
+      </div>
+      <!-- CONTROL CLAVE 2 -->
+      <div class="question">
+        <input type="password" class="form-control" formControlName="clave2" placeholder="Repita contraseña" required />
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['clave2'].errors?.['required'] &&
+          form.controls['clave2'].touched
+                        ">
+          *La contraseña es obligatoria*
+        </small>
+        <small style="color: red; font-weight: lighter; margin-left: 18px; margin-top: 20px;" *ngIf="
+          form.controls['clave1'].value != form.controls['clave2'].value &&
+          form.controls['clave2'].touched
+                        ">
+          *Las contraseñas deben coincidir!*
+        </small>
+      </div>
+    </div>
+
+    <!-- <hr class="my-4" /> -->
+
+    <ion-button expand="block" type="submit" style="margin-top: 30px;"><ion-icon id="logoLogIn"
+        name="person-add-outline"></ion-icon>Registrar</ion-button>
+    <div style="display: flex; justify-content: space-around; justify-items: center;">
+      <ion-button style="margin-right: 15px; margin-left: 5px;" expand="block" (click)="goToUsersList()"><ion-icon id="logoLogIn"
+          name="list-outline"></ion-icon>Ver listado</ion-button>
+      <ion-button style="margin-right: 5px;" *ngIf="!userList" expand="block" (click)="startScan()"><ion-icon id="logoLogIn"
+          name="qr-code"></ion-icon>Escanear DNI</ion-button>
+    </div>
+    <!-- <ion-button *ngIf="!userList" expand="block" (click)="addPhotoToUser()"><ion-icon id="logoLogIn" name="image-outline"></ion-icon>Agregar foto</ion-button> -->
+    <!-- <button
+      class="w-100 btn btn-info btn-lg"
+      style="color: #fff; text-shadow: 1px 1px #000"
+      type="submit"
+    >
+      Registrar Usuario
+    </button> -->
+  </form>
+
+  <!-- *************************** LISTADO DE USUARIOS *************************** -->
+  <div *ngIf="userList">
+    <h2 class="mb-3" style="text-align: center; margin-top: 4rem; text-shadow: 1px 1px #000">
+      LISTADO DE USUARIOS
+    </h2>
+
+    <ion-card style="border: 3px double rgb(0, 0, 0); border-radius: 10px" class="tarjeta-usuario"
+      *ngFor="let item of usersList;">
+      <ion-card-header>
+        <ion-card-title style="text-align: center">Nombre y apellido: {{item.userLastName}} {{item.userName}}</ion-card-title>
+      </ion-card-header>
+      <img style="
+          display: block;
+          width: 12rem;
+          height: 11rem;
+          object-fit: cover;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 0.2rem;
+          border: 2px solid rgb(20, 141, 211);
+          border-radius: 10px;
+        " src="{{item.userPhoto}}" />
+      <ion-card-header>
+        <ion-card-subtitle style="text-align: center">N° DNI: {{item.userDni}}</ion-card-subtitle>
+        <ion-card-subtitle style="text-align: center">Correo: {{item.userEmail}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <!-- *************************** VISTA DEL ESCANER *************************** -->
+  <div class="visor" *ngIf="scanActive">
+    <!-- <h2 class="titulo" *ngIf="scanActive">ESCANEANDO...</h2> -->
+    <p class="monto" [ngClass]="scanActive?'scanner-activo-visor':''">
+      <span></span>
+    </p>
+    <ion-icon (click)="stopScan()" class="btn-danger" id="iconCerrar" name="close"></ion-icon>
+  </div>
+  <!-- <div class="centrado">
+    <button class="escanear" expand="block" type="button" (click)="stopScan()" *ngIf="scanActive">
+      <ion-text style="
+          color: #fff;
+          text-shadow: 2px 2px 4px #000;
+          font-size: 1.7rem;
+          font-family: fantasy;
+        ">DETENER <ion-icon name="qr-code-outline"></ion-icon></ion-text>
+    </button>
+  </div> -->
+
+  <!-- ******************************* SPINNER *******************************-->
+  <ion-spinner *ngIf="pressedButton" color="success" name="lines-sharp-small" style="
+      display: inherit;
+      margin: auto;
+      width: 4cm;
+      height: 4cm;
+      margin-top: 2rem;
+    "></ion-spinner>
+</ion-content>
+
+
+
+<!-- BOCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
